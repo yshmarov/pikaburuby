@@ -1,4 +1,10 @@
 %h1 Editing post
+- if @post.user.id == current_user.id
+  curr
+= @post.user_id
+= current_user.id
+- @x = Post.find(params[:id])
+= @x.user_id
 
 = render 'form'
 

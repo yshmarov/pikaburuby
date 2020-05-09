@@ -3,4 +3,5 @@
 - @posts.each do |post|
   = render 'posts/post', post: post
 
-= link_to 'New Post', new_post_path, class: 'btn btn-success'
+- if current_user
+  = link_to 'New Post', new_post_path, class: 'btn btn-success'

@@ -8,19 +8,8 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    = render 'layouts/header'
     .container
+      %p
       = render 'layouts/messages'
-
-      - if current_user
-        = current_user.email
-        = link_to edit_user_registration_path do
-          .fa.fa-cog
-          %b Настройки
-        = link_to destroy_user_session_path, method: :delete do
-          .fa.fa-sign-out-alt
-          %b Выйти
-      - else
-        = link_to 'Регистрация', new_user_registration_path
-        = link_to 'Вход', new_user_session_path
-
       = yield

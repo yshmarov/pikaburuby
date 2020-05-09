@@ -1,0 +1,26 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  %a.navbar-brand{:href => "/"} Pikaburuby
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item
+        = link_to 'Посты', posts_path, class: 'nav-link'
+
+      - if current_user
+        %li.nav-item
+          .nav-link
+            = current_user.email
+        %li.nav-item
+          = link_to edit_user_registration_path, class: 'nav-link' do
+            .fa.fa-cog
+            %b Настройки
+        %li.nav-item
+          = link_to destroy_user_session_path, method: :delete, class: 'nav-link' do
+            .fa.fa-sign-out-alt
+            %b Выйти
+      - else
+        %ul.navbar-nav
+          %li.nav-item= link_to 'Регистрация', new_user_registration_path, class: 'nav-link'
+          %li.nav-item= link_to 'Вход', new_user_session_path, class: 'nav-link'
+          %li.nav-item= link_to 'Политика Конфиденциальности', privacy_policy_path, class: 'nav-link'
