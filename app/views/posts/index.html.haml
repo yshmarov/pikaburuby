@@ -1,7 +1,7 @@
-%h1 Все посты
+%h3
+  Все посты:
+  = @posts.count
 
 - @posts.each do |post|
   = render 'posts/post', post: post
 
-- if current_user
-  = link_to 'New Post', new_post_path, class: 'btn btn-success'
