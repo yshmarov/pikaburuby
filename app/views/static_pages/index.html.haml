@@ -2,3 +2,13 @@
   %h1 Всем привет!
   %p Find me in app/views/static_pages/index.html.erb
   %button.btn.btn-primary{:type => "button"} Primary
+
+.fab.fa-amazon
+.fa.fa-flag
+.fa.fa-home
+.fa.fa-user
+= link_to 'Домой', root_path
+= link_to root_path, class: 'btn btn-primary' do
+  %h1
+    .fa.fa-home
+    Домой
