@@ -19,3 +19,6 @@ require("channels")
 import "bootstrap"
 require("trix")
 require("@rails/actiontext")
+
+import $ from 'jquery';
+global.$ = jQuery;

@@ -20,5 +20,5 @@ class User < ApplicationRecord
       user
   end
   has_many :posts
-
+  acts_as_voter
 end

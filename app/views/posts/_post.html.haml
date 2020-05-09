@@ -17,7 +17,16 @@
           = link_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
             .fa.fa-trash
             Удалить
-    = post.user.email
-    = post.user.id
+    .float-right
+      = post.user.email
+  .card-footer
+    - if action_name == 'show'
+      = content_tag "div", id: "like-count" do
+        = render 'posts/likes', post: post
+      = content_tag "div", id: "like-link" do
+        = render 'posts/like_link', post: post
+    - else
+      Рейтинг:
+      = post.get_upvotes.size
 
 %p

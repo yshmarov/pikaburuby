@@ -1,0 +1,2 @@
+- vote_text = current_user&.voted_for?(@post) ? "Дизлайк" : "Лайк"
+= link_to vote_text, like_post_path(@post), method: :put, remote: :true

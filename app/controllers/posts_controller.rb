@@ -1,12 +1,20 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
 
   def index
     @posts = Post.all
   end
 
   def show
+  end
+
+  def like
+    if current_user.voted_for? @post
+      @post.unliked_by current_user
+    else
+      @post.liked_by current_user
+    end
   end
 
   def new
