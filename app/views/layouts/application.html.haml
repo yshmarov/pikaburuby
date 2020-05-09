@@ -9,9 +9,8 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .container
-      %p.notice= notice
-      %p.alert= alert
-      
+      = render 'layouts/messages'
+
       - if current_user
         = current_user.email
         = link_to edit_user_registration_path do
