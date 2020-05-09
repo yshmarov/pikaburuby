@@ -15,5 +15,6 @@
       = link_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
         .fa.fa-trash
         Удалить
+    = post.user.email
     
 %p
