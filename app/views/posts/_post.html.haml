@@ -8,7 +8,10 @@
     %small
       = post.created_at.strftime('%H:%M, %d.%m.%y')
       .float-right
+        - if post.user.image?
+          = image_tag post.user.image, size: '30x30', alt: "#{post.user.username}", class: 'rounded-circle'
         = post.user.username
+
   .card-footer.text-center
     - if action_name == 'show'
       = content_tag "div", id: "like-count" do

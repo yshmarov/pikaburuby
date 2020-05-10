@@ -22,7 +22,10 @@
       - if current_user
         %li.nav-item{class: "#{'active font-weight-bold' if current_page?(edit_user_registration_path)}"}
           = link_to edit_user_registration_path, class: 'nav-link' do
-            .fa.fa-user
+            - if current_user.image?
+              = image_tag current_user.image, size: '30x30', alt: "#{current_user.email}", class: 'rounded-circle'
+            - else
+              .fa.fa-user
             = current_user.username
         %li.nav-item{class: "#{'active font-weight-bold' if current_page?(destroy_user_session_path)}"}
           = link_to destroy_user_session_path, method: :delete, class: 'nav-link' do
