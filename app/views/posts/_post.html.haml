@@ -5,11 +5,15 @@
   .card-body
     = post.content
   .card-footer
-    = post.created_at
-    /= link_to 'Показать', post
-    /= link_to 'Редактировать', edit_post_path(post)
-    - if current_user
-      - if post.user == current_user
+    %small
+      = post.created_at
+      .float-right
+        = post.user.username
+  - if current_user
+    - if post.user == current_user
+      .card-footer
+        /= link_to 'Показать', post
+        /= link_to 'Редактировать', edit_post_path(post)
         .btn-group
           = link_to edit_post_path(post), class: 'btn btn-sm btn-warning' do
             .fa.fa-edit
@@ -17,8 +21,6 @@
           = link_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
             .fa.fa-trash
             Удалить
-    .float-right
-      = post.user.email
   .card-footer
     - if action_name == 'show'
       = content_tag "div", id: "like-count" do
@@ -26,7 +28,7 @@
       = content_tag "div", id: "like-link" do
         = render 'posts/like_link', post: post
     - else
-      Рейтинг:
-      = post.get_upvotes.size
+      .fa.fa-heart
+      = post.cached_votes_score
 
 %p

@@ -1,1 +1,3 @@
-= pluralize(@post.get_upvotes.size, "like")
+/= pluralize(@post.cached_votes_score, "like")
+.fa.fa-heart
+= @post.cached_votes_score

@@ -21,4 +21,9 @@ class User < ApplicationRecord
   end
   has_many :posts
   acts_as_voter
+
+  def username
+    self.email.split(/@/).first
+  end
+
 end

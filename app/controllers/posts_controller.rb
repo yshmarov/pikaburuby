@@ -1,9 +1,20 @@
 class PostsController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:index]
+  skip_before_action :authenticate_user!, :only => [:index, :top, :new]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
 
   def index
-    @posts = Post.all
+    #@posts = Post.all
+    redirect_to top_posts_path
+  end
+  
+  def top
+    @posts = Post.all.order(cached_votes_score: :desc)
+    render 'index'
+  end
+  
+  def fresh
+    @posts = Post.all.order(created_at: :desc)
+    render 'index'
   end
 
   def show
