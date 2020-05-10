@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:index, :top, :new]
+  skip_before_action :authenticate_user!, :only => [:index, :top, :fresh]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
 
   def index
     #@posts = Post.all
-    redirect_to top_posts_path
+    redirect_to fresh_posts_path
   end
   
   def top

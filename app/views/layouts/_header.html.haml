@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-success.sticky-top
-  %a.navbar-brand{:href => "/"} 
+  %a.navbar-brand{:href => "/posts/fresh"} 
     = image_tag 'pikabu-555161.png', size: '20x20'
     Pikaburuby
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
@@ -12,13 +12,14 @@
           Лучшее
       %li.nav-item{class: "#{'active font-weight-bold' if current_page?(fresh_posts_path)}"}
         = link_to fresh_posts_path, class: 'nav-link' do
-          .fa.fa-time
+          .far.fa-clock
           Свежее
+      %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_post_path)}"}
+        = link_to new_post_path, class: 'nav-link' do
+          .fa.fa-plus
+          Создать
+    %ul.navbar-nav.mr-right
       - if current_user
-        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_post_path)}"}
-          = link_to new_post_path, class: 'nav-link' do
-            .fa.fa-plus
-            Создать
         %li.nav-item{class: "#{'active font-weight-bold' if current_page?(edit_user_registration_path)}"}
           = link_to edit_user_registration_path, class: 'nav-link' do
             .fa.fa-user
@@ -28,10 +29,9 @@
             .fa.fa-sign-out-alt
             Выйти
       - else
-        %ul.navbar-nav
-          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_user_registration_path)}"}
-            = link_to 'Регистрация', new_user_registration_path, class: 'nav-link'
-          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_user_session_path)}"}
-            = link_to 'Вход', new_user_session_path, class: 'nav-link'
-          /%li.nav-item{class: "#{'active font-weight-bold' if current_page?(privacy_policy_path)}"}
-          /  = link_to 'Политика Конфиденциальности', privacy_policy_path, class: 'nav-link'
+        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_user_registration_path)}"}
+          = link_to 'Регистрация', new_user_registration_path, class: 'nav-link'
+        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_user_session_path)}"}
+          = link_to 'Вход', new_user_session_path, class: 'nav-link'
+        /%li.nav-item{class: "#{'active font-weight-bold' if current_page?(privacy_policy_path)}"}
+        /  = link_to 'Политика Конфиденциальности', privacy_policy_path, class: 'nav-link'
