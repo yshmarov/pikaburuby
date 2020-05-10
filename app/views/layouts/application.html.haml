@@ -13,4 +13,31 @@
     .container
       %p
       = render 'layouts/messages'
-      = yield
+      .row
+        .col-md-8
+          = yield
+        .col-md-4
+          - if current_user
+            = link_to new_post_path, class: 'btn btn-block btn-success' do
+              .fa.fa-plus
+              Создать
+            %p
+          .btn.btn-info.btn-block.disabled
+            .fa.fa-user
+            Пользователей:
+            %span.badge.badge-light
+              = User.count
+          %p
+          .btn.btn-info.btn-block.disabled
+            .fa.fa-fire
+            Постов:
+            %span.badge.badge-light
+              = Post.count
+          %p
+          .btn.btn-info.btn-block.disabled
+            .fa.fa-thumbs-up
+            Голосов:
+            %span.badge.badge-light
+              = ActsAsVotable::Vote.count
+          %p
+

@@ -14,10 +14,10 @@
         = link_to fresh_posts_path, class: 'nav-link' do
           .far.fa-clock
           Свежее
-      %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_post_path)}"}
-        = link_to new_post_path, class: 'nav-link' do
-          .fa.fa-plus
-          Создать
+      /%li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_post_path)}"}
+      /  = link_to new_post_path, class: 'nav-link' do
+      /    .fa.fa-plus
+      /    Создать
     %ul.navbar-nav.mr-right
       - if current_user
         %li.nav-item{class: "#{'active font-weight-bold' if current_page?(edit_user_registration_path)}"}

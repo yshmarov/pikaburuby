@@ -2,9 +2,6 @@
 /  Все посты:
 /  = @posts.count
 
-.row
-  .col-md-2
-  .col-md-8
-    - @posts.each do |post|
-      = render 'posts/post', post: post
+- @posts.each do |post|
+  = render 'posts/post', post: post
 
