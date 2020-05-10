@@ -9,18 +9,6 @@
       = post.created_at
       .float-right
         = post.user.username
-  - if current_user
-    - if post.user == current_user
-      .card-footer
-        /= link_to 'Показать', post
-        /= link_to 'Редактировать', edit_post_path(post)
-        .btn-group
-          = link_to edit_post_path(post), class: 'btn btn-sm btn-warning' do
-            .fa.fa-edit
-            Редактировать
-          = link_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
-            .fa.fa-trash
-            Удалить
   .card-footer.text-center
     - if action_name == 'show'
       = content_tag "div", id: "like-count" do
@@ -30,5 +18,22 @@
     - else
       .fa.fa-heart
       = post.cached_votes_score
+      .row
+      = link_to post_path(post) do
+        .text-secondary.fa.fa-thumbs-up
+        .text-secondary.fa.fa-question
+        .text-secondary.fa.fa-thumbs-down
+  - if current_user
+    - if post.user == current_user
+      .card-footer.text-center
+        /= link_to 'Показать', post
+        /= link_to 'Редактировать', edit_post_path(post)
+        .btn-group
+          = link_to edit_post_path(post), class: 'btn btn-sm btn-warning' do
+            .fa.fa-edit
+            Редактировать
+          = link_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
+            .fa.fa-trash
+            Удалить
 
 %p
