@@ -6,7 +6,7 @@
     = post.content
   .card-footer
     %small
-      = post.created_at
+      = post.created_at.strftime('%H:%M, %d.%m.%y')
       .float-right
         = post.user.username
   .card-footer.text-center
