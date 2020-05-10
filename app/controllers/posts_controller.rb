@@ -21,10 +21,10 @@ class PostsController < ApplicationController
   end
 
   def like
-    if current_user.voted_for? @post
-      @post.unliked_by current_user
+    if current_user.voted_up_on? @post
+      @post.downvote_by current_user
     else
-      @post.liked_by current_user
+      @post.upvote_by current_user
     end
   end
 

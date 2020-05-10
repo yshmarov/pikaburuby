@@ -21,7 +21,7 @@
           = link_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
             .fa.fa-trash
             Удалить
-  .card-footer
+  .card-footer.text-center
     - if action_name == 'show'
       = content_tag "div", id: "like-count" do
         = render 'posts/likes', post: post
