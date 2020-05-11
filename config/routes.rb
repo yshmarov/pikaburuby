@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get :top, :fresh, on: :collection
     member do
       put "like", to: "posts#like"
+      put "favorite", to: "posts#favorite"
+      put "unfavorite", to: "posts#unfavorite"
     end
   end
 

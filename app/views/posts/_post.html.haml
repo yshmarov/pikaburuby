@@ -13,19 +13,24 @@
         = post.user.username
 
   .card-footer.text-center
-    - if action_name == 'show'
-      = content_tag "div", id: "like-count" do
-        = render 'posts/likes', post: post
-      = content_tag "div", id: "like-link" do
+    - if current_user
+      = content_tag "div", id: "like-link-#{post.id}" do
         = render 'posts/like_link', post: post
     - else
-      .fa.fa-heart
-      = post.cached_votes_score
-      .row
-      = link_to post_path(post) do
-        .text-secondary.fa.fa-thumbs-up
-        .text-secondary.fa.fa-question
-        .text-secondary.fa.fa-thumbs-down
+      %b= post.cached_votes_score
+    /= content_tag "div", id: "like-count-#{post.id}" do
+    /  = render 'posts/like_count', post: post
+    /%hr
+    /- if current_user
+    /  - if current_user.voted_up_on? post
+    /    = render 'unfavorite_link', post: post
+    /  - elsif current_user.voted_down_on? post
+    /    = render 'favorite_link', post: post
+    /  - else
+    /    = render 'not_voted', post: post
+    /  = content_tag "div", id: "like-count-#{post.id}" do
+    /    = render 'posts/like_count', post: post
+
   - if current_user
     - if post.user == current_user
       .card-footer.text-center

@@ -1,2 +1,2 @@
-$("#like-count").html("#{j render 'posts/likes', course: @course}");
-$("#like-link").html("#{j render 'posts/like_link', course: @course}");
+//$("#like-count-#{@post.id}").html("#{j render 'posts/like_count', post: @post}");
+$('#like-link-#{@post.id}').replaceWith('#{escape_javascript render 'posts/like_link', post: @post}');

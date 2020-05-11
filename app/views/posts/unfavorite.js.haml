@@ -1,0 +1,2 @@
+$("#like-count-#{@post.id}").html("#{j render 'posts/like_count', post: @post}");
+$('#unfavorite-#{@post.id}').replaceWith('#{escape_javascript render 'favorite_link', post: @post}');
