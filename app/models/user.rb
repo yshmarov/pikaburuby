@@ -22,7 +22,6 @@ class User < ApplicationRecord
             expires: access_token.credentials.expires,
             refresh_token: access_token.credentials.refresh_token,
             password: Devise.friendly_token[0,20],
-            confirmed_at: Time.now #autoconfirm user from omniauth
          )
       else #if user account exists - add additional data
         user.name = access_token.info.name
