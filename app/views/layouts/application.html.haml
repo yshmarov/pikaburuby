@@ -20,23 +20,23 @@
           - if current_user
             = link_to new_post_path, class: 'btn btn-block btn-success' do
               .fa.fa-plus
-              Создать
+              New Post
             %p
           .btn.btn-info.btn-block.disabled
             .fa.fa-user
-            Пользователей:
+            Users:
             %span.badge.badge-light
               = User.count
           %p
           .btn.btn-info.btn-block.disabled
             .fa.fa-fire
-            Постов:
+            Posts:
             %span.badge.badge-light
               = Post.count
           %p
           .btn.btn-info.btn-block.disabled
             .fa.fa-thumbs-up
-            Голосов:
+            Votes:
             %span.badge.badge-light
               = ActsAsVotable::Vote.count
           %p

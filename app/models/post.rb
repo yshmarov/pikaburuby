@@ -5,4 +5,7 @@ class Post < ApplicationRecord
   acts_as_votable
   validates :title, length: { maximum: 70 }
   validates :content, length: { maximum: 10000 }
+	has_many :post_tags, inverse_of: :post, dependent: :destroy
+	has_many :tags, through: :post_tags
+
 end

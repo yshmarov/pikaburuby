@@ -56,7 +56,7 @@ class PostsController < ApplicationController
     if @post.user_id == current_user.id
       #OK
     else
-      redirect_to root_path, notice: 'У вас нет прав!'
+      redirect_to root_path, notice: 'You are not authorized!'
     end
   end
 
@@ -99,7 +99,7 @@ class PostsController < ApplicationController
         format.json { head :no_content }
       end
     else
-      redirect_to root_path, notice: 'У вас нет прав!'
+      redirect_to root_path, notice: 'You are not authorized!'
     end
   end
 
@@ -109,6 +109,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, tag_ids: [])
     end
 end

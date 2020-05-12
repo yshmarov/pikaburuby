@@ -7,6 +7,8 @@
     = f.input :title
     = f.input :content, as: :rich_text_area
     /= f.rich_text_area :content
+    = f.label :tags
+    = f.select :tag_ids, Tag.all.pluck(:name, :id), {}, { multiple: true, class: "selectize-tags" }
 
   .form-actions
     = f.button :submit

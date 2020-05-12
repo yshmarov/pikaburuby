@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("selectize")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -27,3 +28,21 @@ window.addEventListener("trix-file-accept", function(event) {
   event.preventDefault()
   alert("File attachment not supported!")
 })
+
+$(document).on("turbolinks:load", function() {
+  if ($('.selectize')){
+      $('.selectize').selectize({
+          sortField: 'text'
+      });
+  }
+
+  $(".selectize-tags").selectize({
+    create: function(input, callback) {
+      $.post('/tags.json', { tag: { name: input } })
+        .done(function(response){
+          console.log(response)
+          callback({value: response.id, text: response.name });
+        })
+    }
+  });
+});

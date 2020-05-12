@@ -31,6 +31,13 @@
     /  = content_tag "div", id: "like-count-#{post.id}" do
     /    = render 'posts/like_count', post: post
 
+  - if post.tags.any?
+    .card-footer
+      - post.tags.each do |tag|
+        .badge.badge-info
+          = tag.name
+
+
   - if current_user
     - if post.user == current_user
       .card-footer.text-center
