@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index, :top, :fresh]
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :like, :favorite, :unfavorite]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
 
   def index
     #@posts = Post.all
@@ -20,22 +20,7 @@ class PostsController < ApplicationController
   def show
   end
 
-  #def favorite
-  #  @post.upvote_from current_user
-  #  respond_to do |format|
-  #    format.js
-  #  end 
-  #end
-  
-  #def unfavorite
-  #  @post.downvote_by current_user
-  #  respond_to do |format|
-  #   format.js
-  #  end 
-  #end
-
   def like
-    #if current_user.voted_on? @post
     if current_user.voted_up_on? @post
       @post.downvote_by current_user
     elsif current_user.voted_down_on? @post

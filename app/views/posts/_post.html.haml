@@ -18,18 +18,6 @@
         = render 'posts/like_link', post: post
     - else
       %b= post.cached_votes_score
-    /= content_tag "div", id: "like-count-#{post.id}" do
-    /  = render 'posts/like_count', post: post
-    /%hr
-    /- if current_user
-    /  - if current_user.voted_up_on? post
-    /    = render 'unfavorite_link', post: post
-    /  - elsif current_user.voted_down_on? post
-    /    = render 'favorite_link', post: post
-    /  - else
-    /    = render 'not_voted', post: post
-    /  = content_tag "div", id: "like-count-#{post.id}" do
-    /    = render 'posts/like_count', post: post
 
   - if post.tags.any?
     .card-footer
